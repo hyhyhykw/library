@@ -16,11 +16,10 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 
+import com.hy.library.BaseApp;
 import com.hy.library.R;
 import com.hy.library.utils.Logger;
-import com.snhccm.touch.mine.login.LoginActivity;
-import com.snhccm.touch.utils.CacheUserUtils;
-import com.snhccm.touch.utils.ToastWrapper;
+import com.hy.library.utils.ToastWrapper;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Rationale;
 
@@ -225,12 +224,12 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
     }
 
     protected final void toLogin(@NonNull Runnable action) {
-        if (CacheUserUtils.isLogin()) {
+        if (BaseApp.getBaseApp().isLogin()) {
             postDelayed(action, 0);
         } else {
             Bundle bundle = new Bundle();
             bundle.putBoolean("isLogin", true);
-            toActivity(LoginActivity.class, bundle);
+            toActivity(BaseApp.getBaseApp().getLoginActivity(), bundle);
 
         }
     }

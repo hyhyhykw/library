@@ -16,9 +16,8 @@ import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
-import com.snhccm.touch.mine.login.LoginActivity;
-import com.snhccm.touch.utils.AppTool;
-import com.snhccm.touch.utils.CacheUserUtils;
+import com.hy.library.BaseApp;
+import com.hy.library.utils.AppTool;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -81,12 +80,12 @@ public abstract class BaseRecyclerAdapter<T, V extends BaseRecyclerAdapter.BaseV
     }
 
     protected final void toLogin(@NonNull Runnable action) {
-        if (CacheUserUtils.isLogin()) {
+        if (BaseApp.getBaseApp().isLogin()) {
             AppTool.post(action);
         } else {
             Bundle bundle = new Bundle();
             bundle.putBoolean("isLogin", true);
-            toActivity(LoginActivity.class, bundle);
+            toActivity(BaseApp.getBaseApp().getLoginActivity(), bundle);
 //            String operate;
 //            if (args == null || args.length == 0) {
 //                operate = "操作";

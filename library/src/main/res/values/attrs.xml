@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyViewPager">
+        <attr name="isCanScroll" format="boolean"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="ScrollViewPager">
+        <attr name="isSquare" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="android:gravity"/>
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_Layout">
+        <attr name="android:layout_gravity"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="borderRadius" format="dimension"/>
+        <attr name="type">
+            <enum name="normal" value="-1"/>
+            <enum name="circle" value="0"/>
+            <enum name="round" value="1"/>
+        </attr>
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="borderColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="PagerSlidingTabStripWithTextSize">
+        <attr name="indicatorColor" format="color"/>
+        <attr name="underlineColor" format="color"/>
+        <attr name="indicatorHeight" format="dimension"/>
+        <attr name="underlineHeight" format="dimension"/>
+        <attr name="dividerPadding2" format="dimension"/>
+        <attr name="tabPaddingLeftRight" format="dimension"/>
+        <attr name="scrollOffset" format="dimension"/>
+        <attr name="tabBackgroundStrip" format="reference"/>
+        <attr name="shouldExpand" format="boolean"/>
+        <attr name="textAllCaps2" format="boolean"/>
+        <attr name="indicatorRadius" format="dimension"/>
+        <attr name="tabTextColor" format="color"/>
+        <attr name="tabTextSelectedColor" format="color"/>
+        <attr name="tabTextSize" format="dimension"/>
+        <attr name="lineBottomPadding" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonImageCircleBanner">
+        <!--<attr name="android:layout_width"/>-->
+        <attr name="ccb_banner_height" format="dimension"/>
+        <attr name="ccb_indicator_color" format="color"/>
+
+        <attr name="ccb_indicator_drawable" format="reference"/>
+        <attr name="ccb_select_indicator_drawable" format="reference"/>
+
+        <attr name="ccb_indicator_alpha" format="float"/>
+        <attr name="ccb_indicator_size" format="dimension"/>
+        <attr name="ccb_indicator_margin" format="dimension"/>
+
+        <attr name="ccb_indicator_bottom_margin" format="dimension"/>
+        <attr name="ccb_image_type">
+            <enum name="circle" value="0"/>
+            <enum name="round" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>

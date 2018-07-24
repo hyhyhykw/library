@@ -13,9 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.snhccm.touch.mine.login.LoginActivity;
-import com.snhccm.touch.utils.AppTool;
-import com.snhccm.touch.utils.CacheUserUtils;
+import com.hy.library.BaseApp;
+import com.hy.library.utils.AppTool;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,12 +69,12 @@ public abstract class BaseListAdapter<T, V extends BaseListAdapter.BaseViewHolde
     }
 
     protected final void toLogin(@NonNull Runnable action, String... args) {
-        if (CacheUserUtils.isLogin()) {
+        if (BaseApp.getBaseApp().isLogin()) {
             AppTool.post(action);
         } else {
             Bundle bundle = new Bundle();
             bundle.putBoolean("isLogin", true);
-            toActivity(LoginActivity.class, bundle);
+            toActivity(BaseApp.getBaseApp().getLoginActivity(), bundle);
 //            String operate;
 //            if (args == null || args.length == 0) {
 //                operate = "操作";

@@ -22,7 +22,7 @@ public class PermissionCheckUtils {
      */
     public static boolean checkPermission(Activity activity, String permission, String permissionDesc, int requestCode) {
         int currentAPIVersion = Build.VERSION.SDK_INT;
-        if (currentAPIVersion >= android.os.Build.VERSION_CODES.M) {
+        if (currentAPIVersion >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
                 Logger.i("ContextCompat.checkSelfPermission(activity, permission):" + ContextCompat.checkSelfPermission(activity, permission));
                 Logger.i("PackageManager.PERMISSION_GRANTED:" + PackageManager.PERMISSION_GRANTED);

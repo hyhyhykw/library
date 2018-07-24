@@ -11,9 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hy.library.BuildConfig;
+
 import java.util.Stack;
 
-import cn.finalteam.rxgalleryfinal.BuildConfig;
 import cn.finalteam.rxgalleryfinal.Configuration;
 import cn.finalteam.rxgalleryfinal.utils.Logger;
 

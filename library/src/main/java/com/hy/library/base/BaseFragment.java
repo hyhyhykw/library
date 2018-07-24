@@ -19,12 +19,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
-import com.snhccm.touch.R;
-import com.snhccm.touch.TouchApp;
-import com.snhccm.touch.mine.login.LoginActivity;
-import com.snhccm.touch.utils.CacheUserUtils;
-import com.snhccm.touch.utils.Logger;
-import com.snhccm.touch.utils.ToastWrapper;
+import com.hy.library.BaseApp;
+import com.hy.library.R;
+import com.hy.library.utils.Logger;
+import com.hy.library.utils.ToastWrapper;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Rationale;
 
@@ -63,7 +61,7 @@ public abstract class BaseFragment extends Fragment {
         Context context = super.getContext();
         if (null != context)
             return context;
-        return TouchApp.getApp();
+        return BaseApp.getBaseApp().getContext();
     }
 
     private static final Handler myHandler = new Handler(Looper.getMainLooper());
@@ -137,12 +135,12 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected final void toLogin(@NonNull Runnable action) {
-        if (CacheUserUtils.isLogin()) {
+        if (BaseApp.getBaseApp().isLogin()) {
             postDelayed(action, 0);
         } else {
             Bundle bundle = new Bundle();
             bundle.putBoolean("isLogin", true);
-            toActivity(LoginActivity.class, bundle);
+            toActivity(BaseApp.getBaseApp().getLoginActivity(), bundle);
         }
     }
 

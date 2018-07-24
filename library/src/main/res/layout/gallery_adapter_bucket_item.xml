@@ -24,7 +24,8 @@
         android:gravity="center_vertical"
         android:lineSpacingExtra="4dp"
         android:textColor="#2A2A2A"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_toEndOf="@id/iv_bucket_cover"/>
 
     <android.support.v7.widget.AppCompatRadioButton
         android:id="@+id/rb_selected"
@@ -35,5 +36,6 @@
         android:layout_centerVertical="true"
         android:layout_margin="10dp"
         android:checked="true"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_alignParentEnd="true"/>
 </RelativeLayout>
