@@ -2,7 +2,7 @@ package com.hy.library.utils;
 
 import android.text.TextUtils;
 
-import com.snhccm.touch.network.Api;
+import com.hy.library.BaseApp;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
@@ -14,7 +14,7 @@ import com.squareup.picasso.RequestCreator;
 public class PicassoLoader {
     public static RequestCreator load(String image) {
         if (TextUtils.isEmpty(image) || (!image.startsWith("http://") && !image.startsWith("https://"))) {
-            image = Api.URL_BASE + image;
+            image = BaseApp.getBaseApp().getBaseUrl() + image;
         }
         return Picasso.get().load(image);
     }

@@ -68,4 +68,11 @@
             <enum name="round" value="1"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="MultiImageView">
+        <attr name="miv_spacing" format="dimension"/>
+        <attr name="miv_is_round" format="boolean"/>
+        <attr name="miv_border_radius" format="dimension"/>
+        <attr name="miv_default_image" format="reference"/>
+    </declare-styleable>
 </resources>

@@ -13,6 +13,7 @@ import com.alibaba.sdk.android.oss.common.auth.OSSCustomSignerCredentialProvider
 import com.alibaba.sdk.android.oss.common.utils.OSSUtils;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
+import com.hy.library.BaseApp;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -30,9 +31,9 @@ import io.reactivex.schedulers.Schedulers;
  * @author HY
  */
 public class OssUploadManager {
-    public static final String END_POINT = "http://oss-cn-shanghai.aliyuncs.com";
-    public static final String DOMAIN = "http://snhccm-touch.oss-cn-shanghai.aliyuncs.com";
-    private static final String BUCKET = "snhccm-touch";
+    public String END_POINT;
+    public  String DOMAIN;
+    private  String BUCKET;
     public static final int TYPE_IMG_AVATAR = 1;//用户头像
     public static final int TYPE_IMG_USER = 2;//用户封面图片
     public static final int TYPE_VIDEO = 3;//视频
@@ -52,6 +53,9 @@ public class OssUploadManager {
     private OSS mOSS;
 
     private OssUploadManager() {
+        END_POINT = BaseApp.getBaseApp().getEndPoint();
+        DOMAIN = BaseApp.getBaseApp().getDomain();
+        BUCKET = BaseApp.getBaseApp().getBucket();
     }
 
     private static OssUploadManager sOssManager;
@@ -204,7 +208,8 @@ public class OssUploadManager {
         return new OSSCustomSignerCredentialProvider() {
             @Override
             public String signContent(String content) {
-                return OSSUtils.sign(ConstantUtils.getAliyunAccessKey(), ConstantUtils.getAliyunAccessKeySecret(), content);
+
+                return OSSUtils.sign(BaseApp.getBaseApp().getAliyunAccessKey(), BaseApp.getBaseApp().getAliyunAccessKeySecret(), content);
             }
         };
     }

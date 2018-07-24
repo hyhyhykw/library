@@ -35,11 +35,6 @@ import java.util.Locale;
 @SuppressWarnings("unchecked")
 public class AppTool {
 
-    /**
-     * 亚马逊存储桶根目录路径
-     */
-    public static final String AMAZON_BASE = "https://s3.amazonaws.com/minivideo-deployments-mobilehub-2031784333/";
-
     private static long lastClickTime;
 
     /**

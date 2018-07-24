@@ -33,4 +33,8 @@ public interface BaseAppDelegate {
 
     String getBucket();
 
+    String getAliyunAccessKey();
+
+    String getAliyunAccessKeySecret();
+
 }

@@ -1,16 +1,20 @@
 package com.hy.library.component;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.request.RequestOptions;
+import com.hy.library.BaseApp;
 import com.hy.library.R;
+import com.hy.library.utils.GlideLoader;
 import com.hy.library.utils.SizeUtils;
-import com.snhccm.touch.TouchApp;
-import com.snhccm.touch.utils.GlideLoader;
 
 import java.util.ArrayList;
 
@@ -20,6 +24,11 @@ import java.util.ArrayList;
  * @author HY
  */
 public class MultiImageView extends LinearLayout {
+
+    private boolean isRound;
+    private int borderRadius;
+    private int mSpacing;
+
     public MultiImageView(Context context) {
         this(context, null);
     }
@@ -33,10 +42,25 @@ public class MultiImageView extends LinearLayout {
     private LinearLayout mLayout3;
 
     private int imageSize;
+    private Drawable mDefaultImage;
 
     public MultiImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MultiImageView);
+        mDefaultImage = a.getDrawable(R.styleable.MultiImageView_miv_default_image);
+        if (null == mDefaultImage) {
+            mDefaultImage = new ColorDrawable(Color.parseColor("#fff1f1f1"));
+        }
+        isRound = a.getBoolean(R.styleable.MultiImageView_miv_is_round, false);
+        borderRadius = a.getDimensionPixelOffset(R.styleable.MultiImageView_miv_border_radius, BaseApp.getBaseApp().dp1() * 3);
+        mSpacing = a.getDimensionPixelOffset(R.styleable.MultiImageView_miv_spacing, BaseApp.getBaseApp().dp1() * 5);
+
+        a.recycle();
+
         setOrientation(VERTICAL);
+
+
         mLayout1 = new LinearLayout(context);
         mLayout2 = new LinearLayout(context);
         mLayout3 = new LinearLayout(context);
@@ -49,7 +73,7 @@ public class MultiImageView extends LinearLayout {
         addView(mLayout2, layoutParams);
         addView(mLayout3, layoutParams);
 
-        int size = TouchApp.getScreenWidth() - SizeUtils.dp2px(context, 42);
+        int size = BaseApp.getBaseApp().getScreenWidth() - SizeUtils.dp2px(context, 42);
         imageSize = size / 3;
     }
 
@@ -86,12 +110,14 @@ public class MultiImageView extends LinearLayout {
 
             SquareLayout squareLayout = new SquareLayout(getContext());
             RoundImageView roundImageView = new RoundImageView(getContext());
-            roundImageView.setType(RoundImageView.TYPE_ROUND);
-            roundImageView.setBorderRadius(TouchApp.dp1() * 3);
+            if (isRound) {
+                roundImageView.setType(RoundImageView.TYPE_ROUND);
+                roundImageView.setBorderRadius(borderRadius);
+            }
             GlideLoader.load(getContext(), mImages.get(i))
                     .apply(new RequestOptions()
-                            .error(R.drawable.icon_no_pic)
-                            .placeholder(R.drawable.icon_no_pic))
+                            .error(mDefaultImage)
+                            .placeholder(mDefaultImage))
                     .thumbnail(0.4f)
                     .into(roundImageView);
 
@@ -109,7 +135,7 @@ public class MultiImageView extends LinearLayout {
                 if (i == 0) {
                     layoutParams1.leftMargin = 0;
                 } else {
-                    layoutParams1.leftMargin = TouchApp.dp1() * 5;
+                    layoutParams1.leftMargin = mSpacing;
                 }
                 layoutParams1.topMargin = 0;
                 mLayout1.addView(squareLayout, layoutParams1);
@@ -117,17 +143,17 @@ public class MultiImageView extends LinearLayout {
                 if (i == 3) {
                     layoutParams1.leftMargin = 0;
                 } else {
-                    layoutParams1.leftMargin = TouchApp.dp1() * 5;
+                    layoutParams1.leftMargin = mSpacing;
                 }
-                layoutParams1.topMargin = TouchApp.dp1() * 5;
+                layoutParams1.topMargin = mSpacing;
                 mLayout2.addView(squareLayout, layoutParams1);
             } else {
                 if (i == 6) {
                     layoutParams1.leftMargin = 0;
                 } else {
-                    layoutParams1.leftMargin = TouchApp.dp1() * 5;
+                    layoutParams1.leftMargin = mSpacing;
                 }
-                layoutParams1.topMargin = TouchApp.dp1() * 5;
+                layoutParams1.topMargin = mSpacing;
                 mLayout3.addView(squareLayout, layoutParams1);
             }
         }
