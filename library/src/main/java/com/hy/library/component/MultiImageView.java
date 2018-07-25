@@ -106,10 +106,10 @@ public class MultiImageView extends LinearLayout {
             mLayout3.setVisibility(GONE);
 
             RoundImageView roundImageView = new RoundImageView(getContext());
-            if (isRound) {
-                roundImageView.setType(RoundImageView.TYPE_ROUND);
-                roundImageView.setBorderRadius(borderRadius);
-            }
+//            if (isRound) {
+//                roundImageView.setType(RoundImageView.TYPE_ROUND);
+//                roundImageView.setBorderRadius(borderRadius);
+//            }
             if (displayImageOptions == null) {
                 displayImageOptions = new DisplayImageOptions.Builder()
                         .cacheOnDisk(false)
@@ -120,6 +120,9 @@ public class MultiImageView extends LinearLayout {
                         .showImageForEmptyUri(mDefaultImage)
                         .build();
             }
+            LayoutParams layoutParams1 = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            mLayout1.addView(roundImageView, layoutParams1);
+
             ImageLoader.getInstance().displayImage(mImages.get(0), roundImageView, displayImageOptions, new ImageLoadingListener() {
                 @Override
                 public void onLoadingStarted(String imageUri, View view) {
@@ -162,8 +165,7 @@ public class MultiImageView extends LinearLayout {
 
                 }
             });
-            LayoutParams layoutParams1 = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            mLayout1.addView(roundImageView, layoutParams1);
+
 
         } else {
             if (size < 4) {
