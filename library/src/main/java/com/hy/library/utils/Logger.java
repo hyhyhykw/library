@@ -36,13 +36,37 @@ public final class Logger {
     private Logger() {
     }
 
+    public static void setAllowD(boolean allowD) {
+        Logger.allowD = allowD;
+    }
+
+    public static void setAllowE(boolean allowE) {
+        Logger.allowE = allowE;
+    }
+
+    public static void setAllowI(boolean allowI) {
+        Logger.allowI = allowI;
+    }
+
+    public static void setAllowV(boolean allowV) {
+        Logger.allowV = allowV;
+    }
+
+    public static void setAllowW(boolean allowW) {
+        Logger.allowW = allowW;
+    }
+
+    public static void setAllowWtf(boolean allowWtf) {
+        Logger.allowWtf = allowWtf;
+    }
+
     // 容许打印日志的类型，默认是true，设置为false则不打印
-    private static final boolean allowD = true;
-    private static final boolean allowE = true;
-    private static final boolean allowI = true;
-    private static final boolean allowV = true;
-    private static final boolean allowW = true;
-    private static final boolean allowWtf = true;
+    private static  boolean allowD = true;
+    private static  boolean allowE = true;
+    private static  boolean allowI = true;
+    private static  boolean allowV = true;
+    private static  boolean allowW = true;
+    private static  boolean allowWtf = true;
 
     @SuppressLint("DefaultLocale")
     private static String generateTag(StackTraceElement caller) {
@@ -1245,7 +1269,7 @@ public final class Logger {
         return Thread.currentThread().getStackTrace()[4];
     }
 
-    static void point(String path, String tag, String msg) {
+    private static void point(String path, String tag, String msg) {
         if (isSDAva()) {
             Date date = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("",

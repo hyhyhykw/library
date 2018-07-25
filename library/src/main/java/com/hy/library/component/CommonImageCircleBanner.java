@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
@@ -140,7 +141,7 @@ public class CommonImageCircleBanner extends FrameLayout {
 
         mDefaultImage = ta.getDrawable(R.styleable.CommonImageCircleBanner_ccb_default_image);
         if (null == mDefaultImage) {
-            mDefaultImage = new ColorDrawable(Color.parseColor("#fff1f1f1"));
+            mDefaultImage =  ContextCompat.getDrawable(context,R.drawable.icon_error_default);
         }
 
         if (select_alpha == 0) {

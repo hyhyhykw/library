@@ -3,9 +3,8 @@ package com.hy.library.component;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +56,8 @@ public class MultiImageView extends LinearLayout {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MultiImageView);
         mDefaultImage = a.getDrawable(R.styleable.MultiImageView_miv_default_image);
         if (null == mDefaultImage) {
-            mDefaultImage = new ColorDrawable(Color.parseColor("#fff1f1f1"));
+            mDefaultImage = ContextCompat.getDrawable(context, R.drawable.icon_error_default);
+
         }
         isRound = a.getBoolean(R.styleable.MultiImageView_miv_is_round, false);
         borderRadius = a.getDimensionPixelOffset(R.styleable.MultiImageView_miv_border_radius, BaseApp.getBaseApp().dp1() * 3);
