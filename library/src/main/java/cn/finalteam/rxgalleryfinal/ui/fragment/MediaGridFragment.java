@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hy.library.R;
+import com.hy.library.utils.Logger;
 import com.yalantis.ucrop.UCrop;
 import com.yalantis.ucrop.UCropActivity;
 import com.yalantis.ucrop.model.AspectRatio;
@@ -66,7 +68,6 @@ import cn.finalteam.rxgalleryfinal.utils.DefaultRationale;
 import cn.finalteam.rxgalleryfinal.utils.DeviceUtils;
 import cn.finalteam.rxgalleryfinal.utils.EmptyViewUtils;
 import cn.finalteam.rxgalleryfinal.utils.FileUtils;
-import cn.finalteam.rxgalleryfinal.utils.Logger;
 import cn.finalteam.rxgalleryfinal.utils.MediaScanner;
 import cn.finalteam.rxgalleryfinal.utils.MediaUtils;
 import cn.finalteam.rxgalleryfinal.utils.PermissionSetting;
@@ -89,7 +90,7 @@ import io.reactivex.schedulers.Schedulers;
  * Author:KARL-Dujinyang
  * Date:2017.
  */
-public class MediaGridFragment extends BaseFragment implements MediaGridView, RecyclerViewFinal.OnLoadMoreListener,
+public class MediaGridFragment extends GalleryBaseFragment implements MediaGridView, RecyclerViewFinal.OnLoadMoreListener,
         FooterAdapter.OnItemClickListener, View.OnClickListener, MediaScanner.ScanCallback, BucketAdapter.OnRecyclerViewItemClickListener {
 
     private static final String IMAGE_TYPE = "image/jpeg";
@@ -766,7 +767,7 @@ public class MediaGridFragment extends BaseFragment implements MediaGridView, Re
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         if (!TextUtils.isEmpty(mImagePath)) {
             outState.putString(TAKE_URL_STORAGE_KEY, mImagePath);

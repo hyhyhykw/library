@@ -19,6 +19,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 import com.hy.library.R;
+import com.hy.library.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,6 @@ import cn.finalteam.rxgalleryfinal.rxjob.RxJob;
 import cn.finalteam.rxgalleryfinal.ui.fragment.MediaGridFragment;
 import cn.finalteam.rxgalleryfinal.ui.fragment.MediaPageFragment;
 import cn.finalteam.rxgalleryfinal.ui.fragment.MediaPreviewFragment;
-import cn.finalteam.rxgalleryfinal.utils.Logger;
 import cn.finalteam.rxgalleryfinal.utils.OsCompat;
 import cn.finalteam.rxgalleryfinal.utils.ThemeUtils;
 import cn.finalteam.rxgalleryfinal.view.ActivityFragmentView;
@@ -49,7 +49,7 @@ import io.reactivex.disposables.Disposable;
  * Author:pengjianbo  Dujinyang
  * Date:16/5/7 上午10:01
  */
-public class MediaActivity extends BaseActivity implements ActivityFragmentView {
+public class MediaActivity extends GalleryBaseActivity implements ActivityFragmentView {
 
     public static final int REQUEST_STORAGE_READ_ACCESS_PERMISSION = 101;
     public static final int REQUEST_STORAGE_WRITE_ACCESS_PERMISSION = 102;

@@ -34,7 +34,7 @@ import cn.finalteam.rxgalleryfinal.utils.ThemeUtils;
  * Author:pengjianbo  Dujinyang
  * Date:16/6/9 上午1:35
  */
-public class MediaPreviewFragment extends BaseFragment implements ViewPager.OnPageChangeListener,
+public class MediaPreviewFragment extends GalleryBaseFragment implements ViewPager.OnPageChangeListener,
         View.OnClickListener {
 
     private static final String EXTRA_PAGE_INDEX = EXTRA_PREFIX + ".PageIndex";

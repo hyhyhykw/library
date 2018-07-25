@@ -4,6 +4,8 @@ import android.content.Context;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 
+import com.hy.library.utils.Logger;
+
 /**
  * Desction:媒体扫描工具类
  * Author:pengjianbo  Dujinyang

@@ -4,6 +4,7 @@ package cn.finalteam.rxgalleryfinal.utils;
 import android.util.Log;
 
 import com.hy.library.BuildConfig;
+import com.hy.library.utils.Logger;
 
 /**
  * 模式
@@ -26,7 +27,7 @@ public class ModelUtils {
      * @param f 是否打开
      */
     public static void setDebugModel(boolean f) {
-        Logger.DEBUG = f;
+//        Logger.DEBUG = f;
     }
 
 }

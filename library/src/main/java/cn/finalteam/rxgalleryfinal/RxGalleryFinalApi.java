@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.hy.library.R;
+import com.hy.library.utils.Logger;
 import com.yalantis.ucrop.UCrop;
 import com.yalantis.ucrop.UCropActivity;
 import com.yalantis.ucrop.model.AspectRatio;
@@ -32,7 +33,6 @@ import cn.finalteam.rxgalleryfinal.ui.RxGalleryListener;
 import cn.finalteam.rxgalleryfinal.ui.base.IMultiImageCheckedListener;
 import cn.finalteam.rxgalleryfinal.ui.base.IRadioImageCheckedListener;
 import cn.finalteam.rxgalleryfinal.ui.fragment.MediaGridFragment;
-import cn.finalteam.rxgalleryfinal.utils.Logger;
 import cn.finalteam.rxgalleryfinal.utils.MediaScanner;
 import cn.finalteam.rxgalleryfinal.utils.SimpleDateUtils;
 

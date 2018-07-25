@@ -9,6 +9,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 
+import com.hy.library.utils.Logger;
+
 /**
  * Desction:权限检查工具
  * Author:pengjianbo  Dujinyang

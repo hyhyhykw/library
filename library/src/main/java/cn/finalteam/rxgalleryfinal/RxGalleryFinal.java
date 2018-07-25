@@ -9,6 +9,7 @@ import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
+import com.hy.library.utils.Logger;
 import com.yalantis.ucrop.UCropActivity;
 import com.yalantis.ucrop.model.AspectRatio;
 
@@ -22,7 +23,6 @@ import cn.finalteam.rxgalleryfinal.rxbus.event.BaseResultEvent;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageRadioResultEvent;
 import cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity;
-import cn.finalteam.rxgalleryfinal.utils.Logger;
 import cn.finalteam.rxgalleryfinal.utils.ModelUtils;
 import cn.finalteam.rxgalleryfinal.utils.StorageUtils;
 import io.reactivex.disposables.Disposable;

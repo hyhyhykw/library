@@ -1,6 +1,7 @@
 package cn.finalteam.rxgalleryfinal.rxbus;
 
-import cn.finalteam.rxgalleryfinal.utils.Logger;
+import com.hy.library.utils.Logger;
+
 import io.reactivex.observers.DisposableObserver;
 
 /**

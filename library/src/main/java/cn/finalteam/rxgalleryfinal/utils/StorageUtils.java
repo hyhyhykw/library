@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Environment;
 
+import com.hy.library.utils.Logger;
+
 import java.io.File;
 import java.io.IOException;
 

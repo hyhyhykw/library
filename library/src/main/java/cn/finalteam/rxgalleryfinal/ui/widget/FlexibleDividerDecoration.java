@@ -28,7 +28,7 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
     final boolean mPositionInsideItem;
     private final VisibilityProvider mVisibilityProvider;
     private final boolean mShowLastDivider;
-    DividerType mDividerType = DividerType.DRAWABLE;
+    DividerType mDividerType;
     PaintProvider mPaintProvider;
     DrawableProvider mDrawableProvider;
     SizeProvider mSizeProvider;

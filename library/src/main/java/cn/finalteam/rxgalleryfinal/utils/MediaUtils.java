@@ -11,6 +11,7 @@ import android.support.media.ExifInterface;
 import android.text.TextUtils;
 
 import com.hy.library.R;
+import com.hy.library.utils.Logger;
 
 import java.io.File;
 import java.io.IOException;

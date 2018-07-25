@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.hy.library.R;
+import com.hy.library.utils.Logger;
 
 import java.io.File;
 import java.util.List;
@@ -34,7 +35,6 @@ import cn.finalteam.rxgalleryfinal.rxjob.job.ImageThmbnailJobCreate;
 import cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity;
 import cn.finalteam.rxgalleryfinal.ui.base.IMultiImageCheckedListener;
 import cn.finalteam.rxgalleryfinal.ui.widget.SquareRelativeLayout;
-import cn.finalteam.rxgalleryfinal.utils.Logger;
 import cn.finalteam.rxgalleryfinal.utils.OsCompat;
 import cn.finalteam.rxgalleryfinal.utils.ThemeUtils;
 

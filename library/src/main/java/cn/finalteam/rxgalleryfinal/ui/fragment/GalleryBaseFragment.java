@@ -12,22 +12,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hy.library.BuildConfig;
+import com.hy.library.utils.Logger;
 
 import java.util.Stack;
 
 import cn.finalteam.rxgalleryfinal.Configuration;
-import cn.finalteam.rxgalleryfinal.utils.Logger;
 
 /**
  * Desction:
  * Author:pengjianbo  Dujinyang
  * Date:16/5/14 上午10:46
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class GalleryBaseFragment extends Fragment {
 
     public static final String EXTRA_PREFIX = BuildConfig.APPLICATION_ID;
     public static final String EXTRA_CONFIGURATION = EXTRA_PREFIX + ".Configuration";
-    private static Stack<BaseFragment> fragmentStack = new Stack<>();
+    private static Stack<GalleryBaseFragment> fragmentStack = new Stack<>();
     private final String CLASS_NAME = getClass().getSimpleName();
     protected Bundle mSaveDataBundle;
     protected String BUNDLE_KEY = "KEY_" + CLASS_NAME;
@@ -97,7 +97,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Logger.i("onActivityResult");
-        BaseFragment fragment = fragmentStack.isEmpty() ? null : fragmentStack.pop();
+        GalleryBaseFragment fragment = fragmentStack.isEmpty() ? null : fragmentStack.pop();
         if (null != fragment) {
             fragment.onActivityResult(requestCode, resultCode, data);
             return;

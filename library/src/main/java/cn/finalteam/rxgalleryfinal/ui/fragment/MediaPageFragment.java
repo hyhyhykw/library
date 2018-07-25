@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.hy.library.R;
+import com.hy.library.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,6 @@ import cn.finalteam.rxgalleryfinal.rxbus.event.OpenMediaPageFragmentEvent;
 import cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity;
 import cn.finalteam.rxgalleryfinal.ui.adapter.MediaPreviewAdapter;
 import cn.finalteam.rxgalleryfinal.utils.DeviceUtils;
-import cn.finalteam.rxgalleryfinal.utils.Logger;
 import cn.finalteam.rxgalleryfinal.utils.ThemeUtils;
 
 /**
@@ -36,7 +36,7 @@ import cn.finalteam.rxgalleryfinal.utils.ThemeUtils;
  * Author:pengjianbo  Dujinyang
  * Date:16/5/14 下午10:02
  */
-public class MediaPageFragment extends BaseFragment implements ViewPager.OnPageChangeListener,
+public class MediaPageFragment extends GalleryBaseFragment implements ViewPager.OnPageChangeListener,
         View.OnClickListener {
 
     private static final String EXTRA_MEDIA_LIST = EXTRA_PREFIX + ".MediaList";

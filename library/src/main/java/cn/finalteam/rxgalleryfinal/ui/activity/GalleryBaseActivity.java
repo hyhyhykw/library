@@ -7,16 +7,16 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.hy.library.BuildConfig;
+import com.hy.library.utils.Logger;
 
 import cn.finalteam.rxgalleryfinal.Configuration;
-import cn.finalteam.rxgalleryfinal.utils.Logger;
 
 /**
  * Desction:
  * Author:pengjianbo  Dujinyang
  * Date:16/5/16 下午7:36
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class GalleryBaseActivity extends AppCompatActivity {
 
     public static final String EXTRA_PREFIX = BuildConfig.APPLICATION_ID;
     public static final String EXTRA_CONFIGURATION = EXTRA_PREFIX + ".Configuration";
