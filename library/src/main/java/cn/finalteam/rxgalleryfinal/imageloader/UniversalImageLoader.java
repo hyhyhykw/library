@@ -33,6 +33,7 @@ public class UniversalImageLoader implements AbsImageLoader {
         if (resize) {
             imageSize = new ImageSize(width, height);
         }
-        ImageLoader.getInstance().displayImage("file://" + path, new ImageViewAware(imageView), displayImageOptions, imageSize, null, null);
+        ImageLoader.getInstance()
+                .displayImage("file://" + path, new ImageViewAware(imageView), displayImageOptions, imageSize, null, null);
     }
 }

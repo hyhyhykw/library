@@ -13,7 +13,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 
 import com.hy.library.BaseApp;
@@ -34,7 +33,7 @@ import cn.finalteam.rxgalleryfinal.utils.PermissionSetting;
  *
  * @author HY
  */
-public abstract class BaseActivity extends AppCompatActivity implements BGASwipeBackHelper.Delegate, ViewTreeObserver.OnGlobalLayoutListener {
+public abstract class BaseActivity extends AppCompatActivity implements BGASwipeBackHelper.Delegate {
 
     protected BGASwipeBackHelper mSwipeBackHelper;
     private Unbinder mUnbinder;
@@ -73,8 +72,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
         }
     }
 
-    private boolean isInit = false;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         // 「必须在 Application 的 onCreate 方法中执行 BGASwipeBackHelper.init 来初始化滑动返回」
@@ -89,7 +86,16 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
         mRationale = new DefaultRationale();
         mSetting = new PermissionSetting(this);
         initMvp();
+
+        Looper.myQueue().addIdleHandler(() -> {
+            onCreateDelay(savedInstanceState);
+            return false;
+        });
 //        initView();
+    }
+
+    private void onCreateDelay(@Nullable Bundle savedInstanceState) {
+        postDelayed(this::initView, 0);
     }
 
 
@@ -253,7 +259,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
     protected void onResume() {
         Logger.d(getClass().getSimpleName() + ":onResume()");
         super.onResume();
-        getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(this);
     }
 
     @Override
@@ -330,16 +335,4 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
         mSwipeBackHelper.backward();
     }
 
-    @Override
-    public void onGlobalLayout() {
-        if (!isInit) {
-            isInit = true;
-            postDelayed(this::initView, 0);
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        } else {
-            getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
-        }
-    }
 }

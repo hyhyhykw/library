@@ -74,5 +74,6 @@
         <attr name="miv_is_round" format="boolean"/>
         <attr name="miv_border_radius" format="dimension"/>
         <attr name="miv_default_image" format="reference"/>
+        <attr name="miv_max_height" format="dimension"/>
     </declare-styleable>
 </resources>
