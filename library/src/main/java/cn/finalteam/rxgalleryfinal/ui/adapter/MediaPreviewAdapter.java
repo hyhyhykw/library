@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.chrisbanes.photoview.PhotoView;
+import com.hy.library.R;
 
 import java.util.List;
 
 import cn.finalteam.rxgalleryfinal.Configuration;
-import cn.finalteam.rxgalleryfinal.R;
 import cn.finalteam.rxgalleryfinal.bean.MediaBean;
 
 /**

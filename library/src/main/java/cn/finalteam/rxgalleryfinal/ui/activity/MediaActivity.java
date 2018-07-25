@@ -18,10 +18,11 @@ import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
+import com.hy.library.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.finalteam.rxgalleryfinal.R;
 import cn.finalteam.rxgalleryfinal.bean.MediaBean;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBus;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusDisposable;

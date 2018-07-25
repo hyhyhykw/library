@@ -18,14 +18,13 @@ package cn.finalteam.rxgalleryfinal.utils;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.hy.library.R;
 import com.yanzhenjie.alertdialog.AlertDialog;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 import com.yanzhenjie.permission.SettingService;
 
 import java.util.List;
-
-import cn.finalteam.rxgalleryfinal.R;
 
 /**
  * Created by YanZhenjie on 2018/1/1.

@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import cn.finalteam.rxgalleryfinal.R;
+import com.hy.library.R;
 
 
 /**

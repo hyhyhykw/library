@@ -23,12 +23,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import com.hy.library.BaseApp;
 import com.hy.library.R;
 import com.hy.library.base.WeakHandler;
 import com.hy.library.utils.AppTool;
 import com.hy.library.utils.PicassoLoader;
 import com.hy.library.utils.SizeUtils;
-import com.snhccm.touch.TouchApp;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -88,7 +88,7 @@ public class CommonImageCircleBanner extends FrameLayout {
     private int indicator_margin;
     private NestedScrollView mNestedScrollView;
     private ScrollView mScrollView;
-
+    private Drawable mDefaultImage;
 
     public CommonImageCircleBanner(@NonNull Context context) {
         this(context, null);
@@ -117,7 +117,7 @@ public class CommonImageCircleBanner extends FrameLayout {
         mLytIndicators.setOrientation(LinearLayout.HORIZONTAL);
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CommonImageCircleBanner, defStyleAttr, 0);
-        int dimension = (int) ta.getDimension(R.styleable.CommonImageCircleBanner_ccb_banner_height, TouchApp.getScreenWidth());
+        int dimension = (int) ta.getDimension(R.styleable.CommonImageCircleBanner_ccb_banner_height, BaseApp.getBaseApp().getScreenWidth());
 
         LayoutParams vpgParams = new LayoutParams(LayoutParams.MATCH_PARENT, dimension);
 
@@ -138,6 +138,10 @@ public class CommonImageCircleBanner extends FrameLayout {
         select_indicator_drawable = new ColorDrawable(color);
         select_alpha = ta.getFloat(R.styleable.CommonImageCircleBanner_ccb_indicator_alpha, 0);
 
+        mDefaultImage = ta.getDrawable(R.styleable.CommonImageCircleBanner_ccb_default_image);
+        if (null == mDefaultImage) {
+            mDefaultImage = new ColorDrawable(Color.parseColor("#fff1f1f1"));
+        }
 
         if (select_alpha == 0) {
             indicator_drawable = ta.getDrawable(R.styleable.CommonImageCircleBanner_ccb_indicator_drawable);
@@ -330,22 +334,22 @@ public class CommonImageCircleBanner extends FrameLayout {
                 BannerBeanWrapper beanWrapper = mData.get(mData.size() - 1);
                 PicassoLoader
                         .load(beanWrapper.getBannerImage())
-                        .placeholder(R.drawable.icon_no_pic)
-                        .error(R.drawable.icon_no_pic)
+                        .placeholder(mDefaultImage)
+                        .error(mDefaultImage)
                         .into(imageView);
             } else if (position == ivs.size() - 1) {
                 BannerBeanWrapper beanWrapper = mData.get(0);
                 PicassoLoader
                         .load(beanWrapper.getBannerImage())
-                        .placeholder(R.drawable.icon_no_pic)
-                        .error(R.drawable.icon_no_pic)
+                        .placeholder(mDefaultImage)
+                        .error(mDefaultImage)
                         .into(imageView);
             } else {
                 BannerBeanWrapper beanWrapper = mData.get(position - 1);
                 PicassoLoader
                         .load(beanWrapper.getBannerImage())
-                        .placeholder(R.drawable.icon_no_pic)
-                        .error(R.drawable.icon_no_pic)
+                        .placeholder(mDefaultImage)
+                        .error(mDefaultImage)
                         .into(imageView);
 
                 AppTool.setViewClick(imageView, v -> {

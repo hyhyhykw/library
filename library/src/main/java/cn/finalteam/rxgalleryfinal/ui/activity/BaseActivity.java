@@ -6,7 +6,8 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import cn.finalteam.rxgalleryfinal.BuildConfig;
+import com.hy.library.BuildConfig;
+
 import cn.finalteam.rxgalleryfinal.Configuration;
 import cn.finalteam.rxgalleryfinal.utils.Logger;
 

@@ -20,10 +20,11 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.hy.library.R;
+
 import java.util.List;
 
 import cn.finalteam.rxgalleryfinal.Configuration;
-import cn.finalteam.rxgalleryfinal.R;
 import cn.finalteam.rxgalleryfinal.bean.BucketBean;
 import cn.finalteam.rxgalleryfinal.ui.widget.SquareImageView;
 import cn.finalteam.rxgalleryfinal.utils.ThemeUtils;

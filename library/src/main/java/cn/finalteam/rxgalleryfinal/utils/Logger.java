@@ -2,7 +2,7 @@ package cn.finalteam.rxgalleryfinal.utils;
 
 import android.util.Log;
 
-import cn.finalteam.rxgalleryfinal.BuildConfig;
+import com.hy.library.BuildConfig;
 
 /**
  * Desction:日志工具

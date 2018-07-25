@@ -3,7 +3,7 @@ package cn.finalteam.rxgalleryfinal.utils;
 
 import android.util.Log;
 
-import cn.finalteam.rxgalleryfinal.BuildConfig;
+import com.hy.library.BuildConfig;
 
 /**
  * 模式

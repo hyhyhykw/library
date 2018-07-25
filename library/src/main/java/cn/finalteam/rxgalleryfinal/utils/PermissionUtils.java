@@ -3,10 +3,9 @@ package cn.finalteam.rxgalleryfinal.utils;
 import android.app.Activity;
 import android.widget.Toast;
 
+import com.hy.library.R;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Rationale;
-
-import cn.finalteam.rxgalleryfinal.R;
 
 /**
  * Created time : 2018/4/19 11:43.

@@ -9,7 +9,6 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 
-import com.mabeijianxi.smallvideorecord2.DeviceUtils;
 
 import java.io.File;
 import java.security.MessageDigest;
@@ -184,17 +183,6 @@ public final class FileUtils {
         }
     }
 
-    public static String getVideoCachePath(){
-        File dcim = Environment
-                .getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
-        String path = dcim.getPath() + "/touch/";
-        if (DeviceUtils.isZte()) {
-            if (!dcim.exists()) {
-                path = dcim.getPath().replace("/sdcard/", "/sdcard-ext/") + "/touch/";
-            }
-        }
-        return path;
-    }
 
     public static String getExtension(String url) {
         int indexOf = url.lastIndexOf(".");

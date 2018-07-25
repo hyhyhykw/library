@@ -10,12 +10,13 @@ import android.support.annotation.Nullable;
 import android.support.media.ExifInterface;
 import android.text.TextUtils;
 
+import com.hy.library.R;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.finalteam.rxgalleryfinal.R;
 import cn.finalteam.rxgalleryfinal.bean.BucketBean;
 import cn.finalteam.rxgalleryfinal.bean.MediaBean;
 

@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hy.library.R;
 import com.yalantis.ucrop.UCrop;
 import com.yalantis.ucrop.UCropActivity;
 import com.yalantis.ucrop.model.AspectRatio;
@@ -38,7 +39,6 @@ import java.util.Locale;
 import java.util.Random;
 
 import cn.finalteam.rxgalleryfinal.Configuration;
-import cn.finalteam.rxgalleryfinal.R;
 import cn.finalteam.rxgalleryfinal.anim.Animation;
 import cn.finalteam.rxgalleryfinal.anim.SlideInUnderneathAnimation;
 import cn.finalteam.rxgalleryfinal.anim.SlideOutUnderneathAnimation;
