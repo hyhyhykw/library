@@ -129,6 +129,7 @@ public class RoundImageView extends AppCompatImageView {
             } else if (fits) {
                 matrix = null;
             } else if (ScaleType.CENTER == getScaleType()) {
+                if (null == matrix) matrix = new Matrix();
                 matrix.setTranslate(Math.round((viewwidth - drawablewidth) * 0.5f),
                         Math.round((viewheight - drawableheight) * 0.5f));
             } else if (ScaleType.CENTER_CROP == getScaleType()) {
@@ -137,6 +138,7 @@ public class RoundImageView extends AppCompatImageView {
                 } else {
                     dy = (viewheight - drawableheight * scale) * 0.5f;
                 }
+                if (null == matrix) matrix = new Matrix();
                 matrix.setScale(scale, scale);
                 matrix.postTranslate((int) (dx + 0.5f), (int) (dy + 0.5f));
             } else if (ScaleType.CENTER_INSIDE == getScaleType()) {
@@ -149,6 +151,7 @@ public class RoundImageView extends AppCompatImageView {
                 }
                 dx = Math.round((viewwidth - drawablewidth * scale) * 0.5f);
                 dy = Math.round((viewheight - drawableheight * scale) * 0.5f);
+                if (null == matrix) matrix = new Matrix();
                 matrix.setScale(scale, scale);
                 matrix.postTranslate(dx, dy);
             } else {
@@ -157,6 +160,7 @@ public class RoundImageView extends AppCompatImageView {
                 } else {
                     dy = (viewheight - drawableheight * scale) * 0.5f;
                 }
+                if (null == matrix) matrix = new Matrix();
                 matrix.setScale(scale, scale);
                 matrix.postTranslate((int) (dx + 0.5f), (int) (dy + 0.5f));
             }
