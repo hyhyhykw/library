@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -27,7 +28,7 @@ import java.util.ArrayList;
  *
  * @author HY
  */
-public class MultiImageView extends LinearLayout {
+public class MultiImageView extends LinearLayout implements ViewTreeObserver.OnGlobalLayoutListener {
 
     private boolean isRound;
     private int borderRadius;
@@ -80,10 +81,7 @@ public class MultiImageView extends LinearLayout {
         addView(mLayout1, layoutParams);
         addView(mLayout2, layoutParams);
         addView(mLayout3, layoutParams);
-
-
-        int size = BaseApp.getBaseApp().getScreenWidth() - getPaddingLeft() - getPaddingRight() - 2 * mSpacing;
-        imageSize = size / 3;
+        getViewTreeObserver().addOnGlobalLayoutListener(this);
     }
 
     private ArrayList<String> mImages = new ArrayList<>();
@@ -243,6 +241,13 @@ public class MultiImageView extends LinearLayout {
     }
 
     private OnItemClickListener mOnItemClickListener;
+
+    @Override
+    public void onGlobalLayout() {
+        getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        int size = getWidth() - 2 * mSpacing;
+        imageSize = size / 3;
+    }
 
     public interface OnItemClickListener {
         void onClick(int position);
