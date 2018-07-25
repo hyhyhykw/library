@@ -121,6 +121,12 @@ public class MultiImageView extends LinearLayout implements ViewTreeObserver.OnG
             LayoutParams layoutParams1 = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             mLayout1.addView(roundImageView, layoutParams1);
 
+            roundImageView.setOnClickListener(v -> {
+                if (null != mOnItemClickListener) {
+                    mOnItemClickListener.onClick(0);
+                }
+            });
+
             ImageLoader.getInstance().displayImage(mImages.get(0), roundImageView, displayImageOptions, new ImageLoadingListener() {
                 @Override
                 public void onLoadingStarted(String imageUri, View view) {
@@ -194,10 +200,10 @@ public class MultiImageView extends LinearLayout implements ViewTreeObserver.OnG
                                 .placeholder(mDefaultImage))
                         .thumbnail(0.4f)
                         .into(roundImageView);
-
-                int position = i;
+                roundImageView.setTag(i);
                 roundImageView.setOnClickListener(v -> {
                     if (null != mOnItemClickListener) {
+                        int position = (int) roundImageView.getTag();
                         mOnItemClickListener.onClick(position);
                     }
                 });
@@ -247,6 +253,7 @@ public class MultiImageView extends LinearLayout implements ViewTreeObserver.OnG
         getViewTreeObserver().removeGlobalOnLayoutListener(this);
         int size = getWidth() - 2 * mSpacing;
         imageSize = size / 3;
+        requestLayout();
     }
 
     public interface OnItemClickListener {
