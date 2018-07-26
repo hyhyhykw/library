@@ -79,18 +79,19 @@ public class MultiImageView extends LinearLayout {
         addView(mLayout1, layoutParams);
         addView(mLayout2, layoutParams);
         addView(mLayout3, layoutParams);
+        imageSize = (int) ((getRight() - getLeft() - mSpacing * 2f) / 3);
     }
 
 
     //    private boolean mIsFirst = true;
-    private int mTotalWidth;
-
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        mTotalWidth = right - left;
-        imageSize = (int) ((mTotalWidth - mSpacing * 2f) / 3);
-        super.onLayout(changed, left, top, right, bottom);
-    }
+//    private int mTotalWidth;
+//
+//    @Override
+//    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+//        mTotalWidth = right - left;
+//        imageSize = (int) ((mTotalWidth - mSpacing * 2f) / 3);
+//        super.onLayout(changed, left, top, right, bottom);
+//    }
 
     private ArrayList<String> mImages = new ArrayList<>();
 
