@@ -27,7 +27,7 @@ import java.util.ArrayList;
  *
  * @author HY
  */
-public class MultiImageView extends LinearLayout  {
+public class MultiImageView extends LinearLayout {
 
     private boolean isRound;
     private int borderRadius;
@@ -80,6 +80,17 @@ public class MultiImageView extends LinearLayout  {
         addView(mLayout1, layoutParams);
         addView(mLayout2, layoutParams);
         addView(mLayout3, layoutParams);
+    }
+
+
+//    private boolean mIsFirst = true;
+    private int mTotalWidth;
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        mTotalWidth = right - left;
+        imageSize = (int) ((mTotalWidth - mSpacing * 2f) / 3);
+        super.onLayout(changed, left, top, right, bottom);
     }
 
     private ArrayList<String> mImages = new ArrayList<>();
@@ -208,8 +219,8 @@ public class MultiImageView extends LinearLayout  {
                 FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 squareLayout.addView(roundImageView, layoutParams);
 
-                LayoutParams layoutParams1 = new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
-                layoutParams1.weight=1;
+                LayoutParams layoutParams1 = new LayoutParams(imageSize, ViewGroup.LayoutParams.WRAP_CONTENT);
+//                layoutParams1.weight = 1;
 
                 if (i < 3) {
                     if (i == 0) {
