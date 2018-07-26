@@ -62,6 +62,8 @@ public class MultiImageView extends LinearLayout {
         borderRadius = a.getDimensionPixelOffset(R.styleable.MultiImageView_miv_border_radius, BaseApp.getBaseApp().dp1() * 3);
         mSpacing = a.getDimensionPixelOffset(R.styleable.MultiImageView_miv_spacing, BaseApp.getBaseApp().dp1() * 5);
         mMaxHeight = a.getDimensionPixelOffset(R.styleable.MultiImageView_miv_max_height, BaseApp.getBaseApp().dp1() * 212);
+        int left = a.getDimensionPixelOffset(R.styleable.MultiImageView_miv_left, BaseApp.getBaseApp().dp1() * 16);
+        int right = a.getDimensionPixelOffset(R.styleable.MultiImageView_miv_right, BaseApp.getBaseApp().dp1() * 16);
 
         a.recycle();
 
@@ -79,7 +81,7 @@ public class MultiImageView extends LinearLayout {
         addView(mLayout1, layoutParams);
         addView(mLayout2, layoutParams);
         addView(mLayout3, layoutParams);
-        imageSize = (int) ((getRight() - getLeft() - mSpacing * 2f) / 3);
+        imageSize = (int) ((BaseApp.getBaseApp().getScreenWidth() - left - right - mSpacing * 2f) / 3);
     }
 
 
