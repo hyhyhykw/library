@@ -8,7 +8,6 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -28,7 +27,7 @@ import java.util.ArrayList;
  *
  * @author HY
  */
-public class MultiImageView extends LinearLayout implements ViewTreeObserver.OnGlobalLayoutListener {
+public class MultiImageView extends LinearLayout  {
 
     private boolean isRound;
     private int borderRadius;
@@ -81,7 +80,6 @@ public class MultiImageView extends LinearLayout implements ViewTreeObserver.OnG
         addView(mLayout1, layoutParams);
         addView(mLayout2, layoutParams);
         addView(mLayout3, layoutParams);
-        getViewTreeObserver().addOnGlobalLayoutListener(this);
     }
 
     private ArrayList<String> mImages = new ArrayList<>();
@@ -210,7 +208,9 @@ public class MultiImageView extends LinearLayout implements ViewTreeObserver.OnG
                 FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 squareLayout.addView(roundImageView, layoutParams);
 
-                LayoutParams layoutParams1 = new LayoutParams(imageSize, ViewGroup.LayoutParams.WRAP_CONTENT);
+                LayoutParams layoutParams1 = new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams1.weight=1;
+
                 if (i < 3) {
                     if (i == 0) {
                         layoutParams1.leftMargin = 0;
@@ -218,6 +218,7 @@ public class MultiImageView extends LinearLayout implements ViewTreeObserver.OnG
                         layoutParams1.leftMargin = mSpacing;
                     }
                     layoutParams1.topMargin = 0;
+
                     mLayout1.addView(squareLayout, layoutParams1);
                 } else if (i < 6) {
                     if (i == 3) {
@@ -248,13 +249,6 @@ public class MultiImageView extends LinearLayout implements ViewTreeObserver.OnG
 
     private OnItemClickListener mOnItemClickListener;
 
-    @Override
-    public void onGlobalLayout() {
-        getViewTreeObserver().removeGlobalOnLayoutListener(this);
-        int size = getWidth() - 2 * mSpacing;
-        imageSize = size / 3;
-        requestLayout();
-    }
 
     public interface OnItemClickListener {
         void onClick(int position);
