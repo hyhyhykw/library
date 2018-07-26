@@ -11,10 +11,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.bumptech.glide.request.RequestOptions;
 import com.hy.library.BaseApp;
 import com.hy.library.R;
-import com.hy.library.utils.GlideLoader;
+import com.hy.library.utils.PicassoLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -83,7 +82,7 @@ public class MultiImageView extends LinearLayout {
     }
 
 
-//    private boolean mIsFirst = true;
+    //    private boolean mIsFirst = true;
     private int mTotalWidth;
 
     @Override
@@ -203,12 +202,17 @@ public class MultiImageView extends LinearLayout {
                     roundImageView.setType(RoundImageView.TYPE_ROUND);
                     roundImageView.setBorderRadius(borderRadius);
                 }
-                GlideLoader.load(getContext(), mImages.get(i))
-                        .apply(new RequestOptions()
-                                .error(mDefaultImage)
-                                .placeholder(mDefaultImage))
-                        .thumbnail(0.4f)
+                PicassoLoader.load(mImages.get(i))
+                        .error(mDefaultImage)
+                        .placeholder(mDefaultImage)
+                        .resize(imageSize, imageSize)
                         .into(roundImageView);
+//                GlideLoader.load(getContext(), mImages.get(i))
+//                        .apply(new RequestOptions()
+//                                .error(mDefaultImage)
+//                                .placeholder(mDefaultImage))
+//                        .thumbnail(0.4f)
+//                        .into(roundImageView);
                 roundImageView.setTag(i);
                 roundImageView.setOnClickListener(v -> {
                     if (null != mOnItemClickListener) {
