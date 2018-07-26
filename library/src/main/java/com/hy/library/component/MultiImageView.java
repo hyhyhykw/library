@@ -208,6 +208,7 @@ public class MultiImageView extends LinearLayout {
                 PicassoLoader.load(mImages.get(i))
                         .error(mDefaultImage)
                         .placeholder(mDefaultImage)
+                        .centerCrop()
                         .resize(imageSize, imageSize)
                         .into(roundImageView);
 //                GlideLoader.load(getContext(), mImages.get(i))
