@@ -141,7 +141,7 @@ public final class MultiPicDownloader {
             if (file.exists()) {
                 Uri uri;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    uri = FileProvider.getUriForFile(mContext, "com.fx.movie.file_provider", file);
+                    uri = FileProvider.getUriForFile(mContext,mContext.getPackageName()+ ".file_provider", file);
                 } else {
                     uri = Uri.fromFile(file);
                 }
@@ -206,7 +206,7 @@ public final class MultiPicDownloader {
                         Uri uri;
 
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                            uri = FileProvider.getUriForFile(mContext, "com.fx.movie.file_provider", file);
+                            uri = FileProvider.getUriForFile(mContext,mContext.getPackageName()+ ".file_provider", file);
                         } else {
                             uri = Uri.fromFile(file);
                         }
