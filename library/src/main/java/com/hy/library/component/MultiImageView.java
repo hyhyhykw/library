@@ -13,9 +13,9 @@ import android.widget.LinearLayout;
 
 import com.hy.library.BaseApp;
 import com.hy.library.R;
+import com.hy.library.utils.MyImageLoader;
 import com.hy.library.utils.PicassoLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
@@ -138,7 +138,7 @@ public class MultiImageView extends LinearLayout {
                 }
             });
 
-            ImageLoader.getInstance().displayImage(mImages.get(0), roundImageView, displayImageOptions, new ImageLoadingListener() {
+            MyImageLoader.displayImage(mImages.get(0), roundImageView, displayImageOptions, new ImageLoadingListener() {
                 @Override
                 public void onLoadingStarted(String imageUri, View view) {
 
