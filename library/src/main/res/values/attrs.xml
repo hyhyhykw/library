@@ -79,4 +79,9 @@
         <attr name="miv_left" format="dimension"/>
         <attr name="miv_right" format="dimension"/>
     </declare-styleable>
+
+    <declare-styleable name="PointProgress">
+        <attr name="pointColor" format="color"/>
+        <attr name="pointSize" format="dimension"/>
+    </declare-styleable>
 </resources>

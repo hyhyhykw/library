@@ -129,7 +129,7 @@ public class DownloadUtils {
             } else {
                 Uri uri;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    uri = FileProvider.getUriForFile(utils.mContext, utils.mContext.getPackageName() + ".file_provider", file);
+                    uri = FileProvider.getUriForFile(utils.mContext, utils.mContext.getApplicationContext().getPackageName() + ".file_provider", file);
                 } else {
                     uri = Uri.fromFile(file);
                 }

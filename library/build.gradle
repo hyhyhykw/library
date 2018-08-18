@@ -10,7 +10,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
     }
     buildToolsVersion '28.0.2'
 
@@ -20,8 +20,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -71,7 +69,7 @@ configurations.all {
         def requested = details.requested
         if (requested.group == 'com.android.support') {
             if (!requested.name.startsWith("multidex")) {
-                details.useVersion '28.0.0-rc01'
+                details.useVersion '28.0.0-alpha1'
             }
         }
     }
