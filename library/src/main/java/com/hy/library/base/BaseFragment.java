@@ -28,8 +28,8 @@ import com.yanzhenjie.permission.Rationale;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import cn.finalteam.rxgalleryfinal.utils.DefaultRationale;
-import cn.finalteam.rxgalleryfinal.utils.PermissionSetting;
+import com.hy.library.utils.DefaultRationale;
+import com.hy.library.utils.PermissionSetting;
 
 /**
  * Created time : 2018/4/3 11:28.

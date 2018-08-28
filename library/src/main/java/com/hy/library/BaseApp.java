@@ -1,11 +1,13 @@
 package com.hy.library;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 
 import com.hy.library.service.InitializeService;
 import com.hy.library.utils.SizeUtils;
 import com.hy.library.utils.ToastWrapper;
+import com.hy.picker.PhotoModule;
+import com.hy.picker.PhotoPicker;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
@@ -14,7 +16,7 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
  *
  * @author HY
  */
-public abstract class BaseApp extends Application implements BaseAppDelegate {
+public abstract class BaseApp extends MultiDexApplication implements BaseAppDelegate, PhotoModule {
 
     private static BaseApp sBaseApp;
     private int screenWidth;
@@ -40,6 +42,7 @@ public abstract class BaseApp extends Application implements BaseAppDelegate {
     @Override
     public void onCreate() {
         super.onCreate();
+        PhotoPicker.init(this);
         sBaseApp = this;
         BGASwipeBackHelper.init(this, null);
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();

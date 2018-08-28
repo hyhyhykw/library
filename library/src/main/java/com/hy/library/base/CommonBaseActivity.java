@@ -21,8 +21,8 @@ import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Rationale;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
-import cn.finalteam.rxgalleryfinal.utils.DefaultRationale;
-import cn.finalteam.rxgalleryfinal.utils.PermissionSetting;
+import com.hy.library.utils.DefaultRationale;
+import com.hy.library.utils.PermissionSetting;
 
 /**
  * Created time : 2018/8/16 16:22.
