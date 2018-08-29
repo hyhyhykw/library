@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.hy.library.R;
+import com.hy.library.base.CommonBaseActivity;
 import com.hy.library.utils.AppTool;
 
 import java.io.File;
@@ -28,7 +29,7 @@ import java.io.File;
  *
  * @author HY
  */
-public class PictureEditPreviewActivity extends BaseActivity {
+public class PictureEditPreviewActivity extends CommonBaseActivity {
     private View mWholeView;
     private View mToolbarTop;
     private View mToolbarBottom;
@@ -40,6 +41,11 @@ public class PictureEditPreviewActivity extends BaseActivity {
     private boolean mFullScreen;
 
     private PictureSelectorActivity.PicItem mPicItem;
+
+    @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

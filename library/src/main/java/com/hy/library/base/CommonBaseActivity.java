@@ -15,14 +15,16 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.hy.library.BaseApp;
 import com.hy.library.R;
+import com.hy.library.utils.AppTool;
+import com.hy.library.utils.DefaultRationale;
 import com.hy.library.utils.Logger;
+import com.hy.library.utils.PermissionSetting;
 import com.hy.library.utils.ToastWrapper;
+import com.hy.picker.utils.AttrsUtils;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Rationale;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
-import com.hy.library.utils.DefaultRationale;
-import com.hy.library.utils.PermissionSetting;
 
 /**
  * Created time : 2018/8/16 16:22.
@@ -109,6 +111,8 @@ public abstract class CommonBaseActivity extends AppCompatActivity implements BG
         initSwipeBackFinish();
         beforeOnCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
+        boolean isStatusBlack = AttrsUtils.getTypeValueBoolean(this, R.attr.picker_status_black);
+        AppTool.processMIUI(this, isStatusBlack);
         Logger.d(getClass().getSimpleName() + ":onCreate()");
         mRationale = new DefaultRationale();
         mSetting = new PermissionSetting(this);

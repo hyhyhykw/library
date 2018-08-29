@@ -14,6 +14,7 @@ import android.support.v4.content.FileProvider;
 import android.widget.Toast;
 
 import com.hy.library.R;
+import com.hy.library.base.CommonBaseActivity;
 import com.hy.library.utils.Logger;
 import com.hy.picker.utils.CommonUtils;
 
@@ -26,7 +27,7 @@ import java.util.List;
  *
  * @author HY
  */
-public class OpenCameraResultActivity extends BaseActivity {
+public class OpenCameraResultActivity extends CommonBaseActivity {
     public static final int REQUEST_CAMERA = 0x357;
     public static final int REQUEST_EDIT = 0x753;
     private File mEditFile;

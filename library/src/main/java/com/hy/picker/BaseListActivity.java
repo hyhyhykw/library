@@ -10,13 +10,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.hy.library.R;
+import com.hy.library.base.CommonBaseActivity;
 
 /**
  * Created time : 2018/8/28 9:58.
  *
  * @author HY
  */
-public abstract class BaseListActivity extends BaseActivity implements Constants {
+public abstract class BaseListActivity extends CommonBaseActivity implements Constants {
 
     protected ImageView ibBack;
     protected RecyclerView rvCrystal;

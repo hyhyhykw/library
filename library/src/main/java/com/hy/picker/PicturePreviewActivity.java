@@ -28,6 +28,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.github.chrisbanes.photoview.OnViewTapListener;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.hy.library.R;
+import com.hy.library.base.CommonBaseActivity;
 import com.hy.library.utils.AppTool;
 import com.hy.library.utils.Logger;
 import com.hy.picker.utils.CommonUtils;
@@ -44,7 +45,7 @@ import java.util.Locale;
  *
  * @author HY
  */
-public class PicturePreviewActivity extends BaseActivity {
+public class PicturePreviewActivity extends CommonBaseActivity {
     public static final int RESULT_SEND = 1;
     private TextView mIndexTotal;
     private View mWholeView;
@@ -62,6 +63,12 @@ public class PicturePreviewActivity extends BaseActivity {
 
     private int max;
     private TextView mTvEdit;
+
+
+    @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

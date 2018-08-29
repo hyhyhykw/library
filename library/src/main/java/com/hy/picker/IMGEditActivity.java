@@ -41,6 +41,10 @@ public class IMGEditActivity extends IMGEditBaseActivity {
         dp100 = SizeUtils.dp2px(this, 100);
     }
 
+    @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
 
     @Override
     public Bitmap getBitmap() {

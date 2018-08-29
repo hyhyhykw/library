@@ -47,6 +47,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.hy.library.R;
+import com.hy.library.base.CommonBaseActivity;
 import com.hy.library.utils.AppTool;
 import com.hy.library.utils.Logger;
 import com.hy.picker.core.util.SizeUtils;
@@ -66,7 +67,7 @@ import com.hy.library.utils.PermissionUtils;
 
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
-public class PictureSelectorActivity extends BaseActivity {
+public class PictureSelectorActivity extends CommonBaseActivity {
     public static final int REQUEST_PREVIEW = 0;
     public static final int REQUEST_CAMERA = 1;
     private GridView mGridView;

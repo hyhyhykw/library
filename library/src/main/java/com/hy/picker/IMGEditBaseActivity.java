@@ -9,6 +9,7 @@ import android.widget.RadioGroup;
 import android.widget.ViewSwitcher;
 
 import com.hy.library.R;
+import com.hy.library.base.CommonBaseActivity;
 import com.hy.picker.core.IMGMode;
 import com.hy.picker.core.IMGText;
 import com.hy.picker.view.IMGColorGroup;
@@ -20,7 +21,7 @@ import java.io.IOException;
  * Created by felix on 2017/12/5 下午3:08.
  */
 
-abstract class IMGEditBaseActivity extends BaseActivity implements View.OnClickListener,
+abstract class IMGEditBaseActivity extends CommonBaseActivity implements View.OnClickListener,
         IMGTextEditDialog.Callback, RadioGroup.OnCheckedChangeListener,
         DialogInterface.OnShowListener, DialogInterface.OnDismissListener {
 
