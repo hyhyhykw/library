@@ -11,8 +11,6 @@ import com.hy.picker.core.CrystalCategory;
 import com.hy.picker.utils.NetworkUtils;
 import com.yanzhenjie.recyclerview.swipe.widget.DefaultItemDecoration;
 
-import java.util.Locale;
-
 /**
  * Created time : 2018/8/27 16:42.
  *
@@ -41,14 +39,15 @@ public class PickerCrystalCategoryActivity extends BaseListActivity implements C
     @SuppressWarnings("ResultOfMethodCallIgnored")
     protected void initData() {
         String url;
+        String language = getResources().getConfiguration().locale.getLanguage();
         if (isOther) {
-            if (Locale.getDefault() == Locale.CHINESE) {
+            if (language.contains("zh")) {
                 url = CHILD_CATEGORY;
             } else {
                 url = CHILD_CATEGORY_EN;
             }
         } else {
-            if (Locale.getDefault() == Locale.CHINESE) {
+            if (language.contains("zh")) {
                 url = CATEGORY;
             } else {
                 url = CATEGORY_EN;
