@@ -28,14 +28,21 @@ import java.util.List;
  * @author HY
  */
 public class OpenCameraResultActivity extends CommonBaseActivity {
-    public static final int REQUEST_CAMERA = 0x357;
-    public static final int REQUEST_EDIT = 0x753;
+    public static final int REQUEST_OPEN_CAMERA = 0x357;
+    public static final int REQUEST_OPEN_EDIT = 0x753;
     private File mEditFile;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestCamera();
+    }
+
+    @Override
+    public void onSucceed(int requestCode) {
+        super.onSucceed(requestCode);
+        if (requestCode == REQUEST_CAMERA)
+            openCamera();
     }
 
     @Override
@@ -56,14 +63,14 @@ public class OpenCameraResultActivity extends CommonBaseActivity {
 
         startActivityForResult(new Intent(this, IMGEditActivity.class)
                 .putExtra(IMGEditActivity.EXTRA_IMAGE_URI, uri)
-                .putExtra(IMGEditActivity.EXTRA_IMAGE_SAVE_PATH, mEditFile.getAbsolutePath()), REQUEST_EDIT);
+                .putExtra(IMGEditActivity.EXTRA_IMAGE_SAVE_PATH, mEditFile.getAbsolutePath()), REQUEST_OPEN_EDIT);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (requestCode == REQUEST_CAMERA) {
+            if (requestCode == REQUEST_OPEN_CAMERA) {
                 if (mTakePictureUri != null) {
                     String path = mTakePictureUri.getEncodedPath();// getPathFromUri(this, mTakePhotoUri);
 
@@ -95,7 +102,7 @@ public class OpenCameraResultActivity extends CommonBaseActivity {
                     Toast.makeText(this, R.string.picker_photo_failure, Toast.LENGTH_SHORT).show();
                     finish();
                 }
-            } else if (requestCode == REQUEST_EDIT) {
+            } else if (requestCode == REQUEST_OPEN_EDIT) {
                 if (mEditFile != null) {
                     PictureSelectorActivity.PicItem item = new PictureSelectorActivity.PicItem();
                     String uriPath = mEditFile.getAbsolutePath();
@@ -120,7 +127,7 @@ public class OpenCameraResultActivity extends CommonBaseActivity {
 
     private Uri mTakePictureUri;
 
-    protected void requestCamera() {
+    protected void openCamera() {
         if (!CommonUtils.existSDCard()) {
             Toast.makeText(this, R.string.picker_empty_sdcard, Toast.LENGTH_SHORT).show();
             finish();
@@ -149,7 +156,7 @@ public class OpenCameraResultActivity extends CommonBaseActivity {
             }
 
             intent.putExtra(MediaStore.EXTRA_OUTPUT, mTakePictureUri);
-            startActivityForResult(intent, REQUEST_CAMERA);
+            startActivityForResult(intent, REQUEST_OPEN_CAMERA);
         }
     }
 

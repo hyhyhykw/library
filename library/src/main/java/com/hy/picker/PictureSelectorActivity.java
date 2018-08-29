@@ -50,6 +50,7 @@ import com.hy.library.R;
 import com.hy.library.base.CommonBaseActivity;
 import com.hy.library.utils.AppTool;
 import com.hy.library.utils.Logger;
+import com.hy.library.utils.PermissionUtils;
 import com.hy.picker.core.util.SizeUtils;
 import com.hy.picker.utils.CommonUtils;
 import com.hy.picker.utils.ObjectsUtils;
@@ -62,8 +63,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import com.hy.library.utils.PermissionUtils;
 
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -415,7 +414,7 @@ public class PictureSelectorActivity extends CommonBaseActivity {
         super.onBackPressed();
     }
 
-    protected void requestCamera() {
+    protected void openCamera() {
         if (!CommonUtils.existSDCard()) {
             Toast.makeText(this, R.string.picker_empty_sdcard, Toast.LENGTH_SHORT).show();
             return;
@@ -896,19 +895,9 @@ public class PictureSelectorActivity extends CommonBaseActivity {
                 View cameraView = mInflater.inflate(R.layout.picker_grid_camera, parent, false);
                 ImageButton mask = cameraView.findViewById(R.id.picker_camera_mask);
 
-                mask.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        new PermissionUtils(PictureSelectorActivity.this)
-                                .setPermissionListener(new PermissionUtils.PermissionListener() {
-                                    @Override
-                                    public void onResult() {
-                                        requestCamera();
-                                    }
-                                })
-                                .requestPermission(Permission.CAMERA);
-                    }
-                });
+                mask.setOnClickListener(v -> new PermissionUtils(PictureSelectorActivity.this)
+                        .setPermissionListener(PictureSelectorActivity.this::openCamera)
+                        .requestPermission(Permission.CAMERA));
 
                 return cameraView;
             } else {
