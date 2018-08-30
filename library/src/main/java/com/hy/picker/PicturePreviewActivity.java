@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.github.chrisbanes.photoview.OnViewTapListener;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.hy.library.R;
 import com.hy.library.base.CommonBaseActivity;
@@ -130,17 +129,6 @@ public class PicturePreviewActivity extends CommonBaseActivity {
                 finish();
             }
         });
-
-//        mUseOrigin.setText(R.string.rc_picprev_origin);
-//        mUseOrigin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked && getTotalSelectedNum() == 0) {
-//                    mItemList.get(mCurrentIndex).selected = mSelectBox.isChecked();
-//                    updateToolbar();
-//                }
-//            }
-//        });
 
         mSelectBox.setText(R.string.picker_picprev_select);
         mSelectBox.setChecked(mItemList.get(mCurrentIndex).selected);
@@ -282,36 +270,6 @@ public class PicturePreviewActivity extends CommonBaseActivity {
         return sum;
     }
 
-//    private String getTotalSelectedSize() {
-//        float size = 0.0F;
-//
-//        int i;
-//        File file;
-//        for (i = 0; i < mItemList.size(); ++i) {
-//            if (mItemList.get(i).selected) {
-//                file = new File(mItemList.get(i).uri);
-//                size += (float) (file.length() / 1024L);
-//            }
-//        }
-//
-//        if (mItemSelectedList != null) {
-//            for (i = 0; i < mItemSelectedList.size(); ++i) {
-//                if (mItemSelectedList.get(i).selected) {
-//                    file = new File(mItemSelectedList.get(i).uri);
-//                    size += (float) (file.length() / 1024L);
-//                }
-//            }
-//        }
-//
-//        String totalSize;
-//        if (size < 1024.0F) {
-//            totalSize = String.format(Locale.getDefault(), "%.0fK", size);
-//        } else {
-//            totalSize = String.format(Locale.getDefault(), "%.1fM", size / 1024.0F);
-//        }
-//
-//        return totalSize;
-//    }
 
     private void updateToolbar() {
         int selNum = getTotalSelectedNum();
@@ -334,20 +292,6 @@ public class PicturePreviewActivity extends CommonBaseActivity {
         }
     }
 
-//    public static int getSmartBarHeight(Context context) {
-//        try {
-//            @SuppressLint("PrivateApi")
-//            Class c = Class.forName("com.android.internal.R$dimen");
-//            Object obj = c.newInstance();
-//            Field field = c.getField("mz_action_button_min_height");
-//            int height = Integer.parseInt(field.get(obj).toString());
-//            return context.getResources().getDimensionPixelSize(height);
-//        } catch (Exception var5) {
-//            var5.printStackTrace();
-//            return 0;
-//        }
-//    }
-
 
     private class PreviewAdapter extends PagerAdapter {
         private PreviewAdapter() {
@@ -367,35 +311,32 @@ public class PicturePreviewActivity extends CommonBaseActivity {
             final ImageView imageView;
             if (picItem.isGif()) {
                 imageView = new ImageView(container.getContext());
-                imageView.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mFullScreen = !mFullScreen;
-                        View decorView;
-                        byte uiOptions;
-                        if (mFullScreen) {
-                            if (VERSION.SDK_INT < 16) {
-                                getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                            } else {
-                                decorView = getWindow().getDecorView();
-                                uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-                                decorView.setSystemUiVisibility(uiOptions);
-                            }
-
-                            mToolbarTop.setVisibility(View.INVISIBLE);
-                            mToolbarBottom.setVisibility(View.INVISIBLE);
+                imageView.setOnClickListener(v -> {
+                    mFullScreen = !mFullScreen;
+                    View decorView;
+                    byte uiOptions;
+                    if (mFullScreen) {
+                        if (VERSION.SDK_INT < 16) {
+                            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
                         } else {
-                            if (VERSION.SDK_INT < 16) {
-                                getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                            } else {
-                                decorView = getWindow().getDecorView();
-                                uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
-                                decorView.setSystemUiVisibility(uiOptions);
-                            }
-
-                            mToolbarTop.setVisibility(View.VISIBLE);
-                            mToolbarBottom.setVisibility(View.VISIBLE);
+                            decorView = getWindow().getDecorView();
+                            uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+                            decorView.setSystemUiVisibility(uiOptions);
                         }
+
+                        mToolbarTop.setVisibility(View.INVISIBLE);
+                        mToolbarBottom.setVisibility(View.INVISIBLE);
+                    } else {
+                        if (VERSION.SDK_INT < 16) {
+                            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        } else {
+                            decorView = getWindow().getDecorView();
+                            uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
+                            decorView.setSystemUiVisibility(uiOptions);
+                        }
+                        AppTool.processMIUI(PicturePreviewActivity.this, mIsStatusBlack);
+                        mToolbarTop.setVisibility(View.VISIBLE);
+                        mToolbarBottom.setVisibility(View.VISIBLE);
                     }
                 });
 
@@ -403,35 +344,32 @@ public class PicturePreviewActivity extends CommonBaseActivity {
             } else {
                 imageView = new PhotoView(container.getContext());
 
-                ((PhotoView) imageView).setOnViewTapListener(new OnViewTapListener() {
-                    @Override
-                    public void onViewTap(View view, float x, float y) {
-                        mFullScreen = !mFullScreen;
-                        View decorView;
-                        byte uiOptions;
-                        if (mFullScreen) {
-                            if (VERSION.SDK_INT < 16) {
-                                getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                            } else {
-                                decorView = getWindow().getDecorView();
-                                uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-                                decorView.setSystemUiVisibility(uiOptions);
-                            }
-
-                            mToolbarTop.setVisibility(View.INVISIBLE);
-                            mToolbarBottom.setVisibility(View.INVISIBLE);
+                ((PhotoView) imageView).setOnViewTapListener((view, x, y) -> {
+                    mFullScreen = !mFullScreen;
+                    View decorView;
+                    byte uiOptions;
+                    if (mFullScreen) {
+                        if (VERSION.SDK_INT < 16) {
+                            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
                         } else {
-                            if (VERSION.SDK_INT < 16) {
-                                getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                            } else {
-                                decorView = getWindow().getDecorView();
-                                uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
-                                decorView.setSystemUiVisibility(uiOptions);
-                            }
-
-                            mToolbarTop.setVisibility(View.VISIBLE);
-                            mToolbarBottom.setVisibility(View.VISIBLE);
+                            decorView = getWindow().getDecorView();
+                            uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+                            decorView.setSystemUiVisibility(uiOptions);
                         }
+
+                        mToolbarTop.setVisibility(View.INVISIBLE);
+                        mToolbarBottom.setVisibility(View.INVISIBLE);
+                    } else {
+                        if (VERSION.SDK_INT < 16) {
+                            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        } else {
+                            decorView = getWindow().getDecorView();
+                            uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
+                            decorView.setSystemUiVisibility(uiOptions);
+                        }
+                        AppTool.processMIUI(PicturePreviewActivity.this, mIsStatusBlack);
+                        mToolbarTop.setVisibility(View.VISIBLE);
+                        mToolbarBottom.setVisibility(View.VISIBLE);
                     }
                 });
 

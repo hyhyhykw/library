@@ -42,7 +42,7 @@ dependencies {
     api 'com.yanzhenjie:recyclerview-swipe:1.1.4'
     api 'com.google.code.gson:gson:2.8.5'
     //滑动关闭
-    api 'cn.bingoogolapple:bga-swipebacklayout:1.1.8@aar'
+    api 'cn.bingoogolapple:bga-swipebacklayout:1.1.9@aar'
     //阿里云
     api 'com.aliyun.dpa:oss-android-sdk:2.8.3'
 

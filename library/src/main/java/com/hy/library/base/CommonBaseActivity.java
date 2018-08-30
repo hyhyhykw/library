@@ -40,6 +40,7 @@ public abstract class CommonBaseActivity extends AppCompatActivity implements BG
     protected static final int REQUEST_CAMERA = 345;
     private Rationale mRationale;
     private PermissionSetting mSetting;
+    protected boolean mIsStatusBlack;
 
     protected final void requestStorage() {
         requestPermission(REQUEST_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -111,8 +112,8 @@ public abstract class CommonBaseActivity extends AppCompatActivity implements BG
         initSwipeBackFinish();
         beforeOnCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
-        boolean isStatusBlack = AttrsUtils.getTypeValueBoolean(this, R.attr.picker_status_black);
-        AppTool.processMIUI(this, isStatusBlack);
+        mIsStatusBlack = AttrsUtils.getTypeValueBoolean(this, R.attr.picker_status_black);
+        AppTool.processMIUI(this, mIsStatusBlack);
         Logger.d(getClass().getSimpleName() + ":onCreate()");
         mRationale = new DefaultRationale();
         mSetting = new PermissionSetting(this);

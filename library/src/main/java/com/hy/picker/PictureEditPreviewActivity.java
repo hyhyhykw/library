@@ -88,7 +88,7 @@ public class PictureEditPreviewActivity extends CommonBaseActivity {
                     uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
                     decorView.setSystemUiVisibility(uiOptions);
                 }
-
+                AppTool.processMIUI(this, mIsStatusBlack);
                 mToolbarTop.setVisibility(View.VISIBLE);
                 mToolbarBottom.setVisibility(View.VISIBLE);
             }
