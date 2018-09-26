@@ -112,6 +112,9 @@ public abstract class CommonBaseActivity extends AppCompatActivity implements BG
         initSwipeBackFinish();
         beforeOnCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
+
+        BaseApp.getBaseApp().addActivity(this);
+
         mIsStatusBlack = AttrsUtils.getTypeValueBoolean(this, R.attr.picker_status_black);
         AppTool.processMIUI(this, mIsStatusBlack);
         Logger.d(getClass().getSimpleName() + ":onCreate()");
@@ -163,6 +166,7 @@ public abstract class CommonBaseActivity extends AppCompatActivity implements BG
 
     @Override
     protected void onDestroy() {
+        BaseApp.getBaseApp().removeActivity(this);
         super.onDestroy();
         Logger.d(getClass().getSimpleName() + ":onDestroy()");
 
