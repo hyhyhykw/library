@@ -1,5 +1,6 @@
 package com.hy.library;
 
+import android.app.Activity;
 import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 
@@ -8,6 +9,8 @@ import com.hy.library.utils.SizeUtils;
 import com.hy.library.utils.ToastWrapper;
 import com.hy.picker.PhotoModule;
 import com.hy.picker.PhotoPicker;
+
+import java.util.LinkedList;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
@@ -22,6 +25,8 @@ public abstract class BaseApp extends MultiDexApplication implements BaseAppDele
     private int screenWidth;
     private int screenHeight;
     private int dp1;
+    //运用list来保存们每一个activity是关键
+    private LinkedList<Activity> mList = new LinkedList<>();
 
     public static BaseApp getBaseApp() {
         return sBaseApp;
@@ -33,6 +38,25 @@ public abstract class BaseApp extends MultiDexApplication implements BaseAppDele
 
     public int getScreenWidth() {
         return screenWidth;
+    }
+
+    public void addActivity(Activity activity) {
+        mList.add(activity);
+    }
+
+    public void removeActivity(Activity activity) {
+        mList.remove(activity);
+    }
+
+    public Activity getCurrentActivity() {
+        if (mList.isEmpty()) return null;
+        return mList.getLast();
+    }
+
+    @Override
+    public void onTerminate() {
+        mList.clear();
+        super.onTerminate();
     }
 
     public int dp1() {
