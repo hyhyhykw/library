@@ -24,6 +24,8 @@ import com.hy.picker.utils.AttrsUtils;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Rationale;
 
+import java.util.List;
+
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
 /**
@@ -58,13 +60,15 @@ public abstract class CommonBaseActivity extends AppCompatActivity implements BG
                     //权限请求成功
                     onSucceed(requestCode);
                 })
-                .onDenied(permission -> {
-                    ToastWrapper.show(R.string.failure);
-                    if (AndPermission.hasAlwaysDeniedPermission(CommonBaseActivity.this, permission)) {
-                        mSetting.showSetting(permission);
-                    }
-                })
+                .onDenied(this::onDenied)
                 .start();
+    }
+
+    protected void onDenied(List<String> permission) {
+        ToastWrapper.show(R.string.failure);
+        if (AndPermission.hasAlwaysDeniedPermission(CommonBaseActivity.this, permission)) {
+            mSetting.showSetting(permission);
+        }
     }
 
     public void onSucceed(int requestCode) {
