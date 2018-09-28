@@ -21,15 +21,17 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.hy.library.BaseApp;
 import com.hy.library.R;
+import com.hy.library.utils.DefaultRationale;
 import com.hy.library.utils.Logger;
+import com.hy.library.utils.PermissionSetting;
 import com.hy.library.utils.ToastWrapper;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Rationale;
 
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import com.hy.library.utils.DefaultRationale;
-import com.hy.library.utils.PermissionSetting;
 
 /**
  * Created time : 2018/4/3 11:28.
@@ -244,15 +246,16 @@ public abstract class BaseFragment extends Fragment {
                     //权限请求成功
                     onSucceed(requestCode);
                 })
-                .onDenied(permission -> {
-                    ToastWrapper.show(R.string.failure);
-                    if (AndPermission.hasAlwaysDeniedPermission(getContext(), permission)) {
-                        mSetting.showSetting(permission);
-                    }
-                })
+                .onDenied(this::onDenied)
                 .start();
     }
 
+    protected void onDenied(List<String> permission){
+        ToastWrapper.show(R.string.failure);
+        if (AndPermission.hasAlwaysDeniedPermission(getContext(), permission)) {
+            mSetting.showSetting(permission);
+        }
+    }
     public void onSucceed(int requestCode) {
 
     }
