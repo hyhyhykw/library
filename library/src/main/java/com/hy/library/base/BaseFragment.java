@@ -256,6 +256,7 @@ public abstract class BaseFragment extends Fragment {
             mSetting.showSetting(permission);
         }
     }
+
     public void onSucceed(int requestCode) {
 
     }
